@@ -82,7 +82,40 @@ SELECT * FROM MiscItemSearch;
 GO
 
 
+CREATE VIEW CurrencyTypeLocation
+([Location],[CurrencyType], [Amount]) AS
+SELECT locations.LocationsName, Currency.CurrencyName, CurrencyLocations.CurrencyLocationsQty
+FROM Currency
+inner join CurrencyLocations on Currency.CurrencyID = CurrencyLocations.CurrencyID
+inner join Locations on CurrencyLocations.LocationsID = Locations.LocationsID;
+GO
 
+SELECT *
+FROM CurrencyTypeLocation;
+GO
+
+
+CREATE VIEW PowerSourceTypeLocation
+([Location],[SourceName],[Amount]) as 
+SELECT LocationsName, PowerSourceName, PowerSourceLocationsQty
+FROM Locations
+INNER JOIN PowerSourceLocations on PowerSourceLocations.LocationsID = Locations.LocationsID
+INNER JOIN PowerSource on PowerSource.PowerSourceID = PowerSourceLocations.PowerSourceID;
+GO
+
+SELECT * FROM PowerSourceTypeLocation
+GO
+
+CREATE VIEW ExpirationDays
+([Loaction],[Description],[DaysTillExpiration]) AS
+SELECT LocationsName, ResourcesDescription, DATEDIFF(Day, GETDATE(), ResourcesExpiration)
+FROM Resources
+INNER JOIN ResourcesLocations on ResourcesLocations.ResourcesID = Resources.ResourcesID
+INNER JOIN Locations on Locations.LocationsID = ResourcesLocations.LocationsID;
+GO
+
+SELECT * FROM ExpirationDays ORDER by DaysTillExpiration;
+GO
 
 
 
