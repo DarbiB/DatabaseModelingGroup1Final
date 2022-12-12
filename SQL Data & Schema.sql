@@ -1,42 +1,12 @@
 USE [master]
 GO
-/****** Object:  Database [Doomsday]    Script Date: 12/11/2022 10:40:14 PM ******/
+/****** Object:  Database [Doomsday]    Script Date: 12/12/2022 1:02:46 AM ******/
 CREATE DATABASE [Doomsday]
 GO
 
 USE [Doomsday]
 GO
 
-CREATE TABLE [dbo].[Currency](
-	[CurrencyID] [varchar](8) NOT NULL,
-	[CurrencyName] [varchar](50) NOT NULL,
- CONSTRAINT [PK_Currency] PRIMARY KEY CLUSTERED 
-(
-	[CurrencyID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[CurrencyLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CurrencyLocations](
-	[CurrencyID] [varchar](8) NOT NULL,
-	[LocationsID] [varchar](8) NOT NULL,
-	[CurrencyLocationsQty] [int] NOT NULL,
- CONSTRAINT [PK_CurrencyLocations] PRIMARY KEY CLUSTERED 
-(
-	[CurrencyID] ASC,
-	[LocationsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Locations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Locations](
 	[LocationsID] [varchar](8) NOT NULL,
 	[LocationsName] [varchar](50) NOT NULL,
@@ -49,149 +19,7 @@ CREATE TABLE [dbo].[Locations](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MedicalSupplies]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[MedicalSupplies](
-	[MedicalSupplyID] [varchar](8) NOT NULL,
-	[MedicalSupplyName] [varchar](100) NOT NULL,
-	[MedicalSupplyDepartment] [varchar](50) NOT NULL,
-	[MedicalSupplyDescription] [varchar](50) NOT NULL,
- CONSTRAINT [PK_MedicalSupplies] PRIMARY KEY CLUSTERED 
-(
-	[MedicalSupplyID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[MedicalSuppliesLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[MedicalSuppliesLocations](
-	[MedicalSupplyID] [varchar](8) NOT NULL,
-	[LocationsID] [varchar](8) NOT NULL,
-	[MedicalSuppliesLocationsQty] [int] NOT NULL,
- CONSTRAINT [PK_MedicalSuppliesLocations] PRIMARY KEY CLUSTERED 
-(
-	[MedicalSupplyID] ASC,
-	[LocationsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[MiscItems]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[MiscItems](
-	[MiscItemsID] [varchar](8) NOT NULL,
-	[MiscItemsType] [varchar](50) NOT NULL,
-	[MiscItemsDescription] [varchar](50) NOT NULL,
- CONSTRAINT [PK_MiscItems] PRIMARY KEY CLUSTERED 
-(
-	[MiscItemsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[MiscItemsLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[MiscItemsLocations](
-	[MiscItemsID] [varchar](8) NOT NULL,
-	[LocationsID] [varchar](8) NOT NULL,
-	[MiscItemsLocationsQty] [int] NOT NULL,
- CONSTRAINT [PK_MiscItemsLocations] PRIMARY KEY CLUSTERED 
-(
-	[MiscItemsID] ASC,
-	[LocationsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[PowerSource]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[PowerSource](
-	[PowerSourceID] [varchar](8) NOT NULL,
-	[PowerSourceName] [varchar](50) NOT NULL,
-	[PowerSourceUnits] [varchar](50) NOT NULL,
- CONSTRAINT [PK_PowerSource] PRIMARY KEY CLUSTERED 
-(
-	[PowerSourceID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[PowerSourceLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[PowerSourceLocations](
-	[PowerSourceID] [varchar](8) NOT NULL,
-	[LocationsID] [varchar](8) NOT NULL,
-	[PowerSourceLocationsQty] [int] NOT NULL,
- CONSTRAINT [PK_PowerSourceLocations] PRIMARY KEY CLUSTERED 
-(
-	[PowerSourceID] ASC,
-	[LocationsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Resources]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Resources](
-	[ResourcesID] [varchar](8) NOT NULL,
-	[ResourcesDescription] [varchar](100) NOT NULL,
-	[ResourcesExpiration] [date] NOT NULL,
-	[ResourcesUnits] [varchar](50) NOT NULL,
-	[CurrencyID] [varchar](8) NOT NULL,
-	[ResourcesCurrencyCost] [int] NOT NULL,
- CONSTRAINT [PK_Resources] PRIMARY KEY CLUSTERED 
-(
-	[ResourcesID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[ResourcesLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[ResourcesLocations](
-	[ResourcesID] [varchar](8) NOT NULL,
-	[LocationsID] [varchar](8) NOT NULL,
-	[ResourcesLocationsQty] [int] NOT NULL,
- CONSTRAINT [PK_ResourcesLocations] PRIMARY KEY CLUSTERED 
-(
-	[ResourcesID] ASC,
-	[LocationsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Skills]    Script Date: 12/11/2022 10:40:15 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Skills](
-	[SkillsID] [varchar](8) NOT NULL,
-	[SkillsDescription] [varchar](100) NOT NULL,
- CONSTRAINT [PK_Skills] PRIMARY KEY CLUSTERED 
-(
-	[SkillsID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Survivors]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Table [dbo].[Survivors]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -209,7 +37,21 @@ CREATE TABLE [dbo].[Survivors](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SurvivorsSkills]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Table [dbo].[Skills]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Skills](
+	[SkillsID] [varchar](8) NOT NULL,
+	[SkillsDescription] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_Skills] PRIMARY KEY CLUSTERED 
+(
+	[SkillsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SurvivorsSkills]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -224,7 +66,243 @@ CREATE TABLE [dbo].[SurvivorsSkills](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transportation]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  View [dbo].[PeopleSkills]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[PeopleSkills]
+([First Name], [Last Name], [Skill], [Location]) AS
+SELECT SurvivorsFirstName, SurvivorsLastName, SkillsDescription, LocationsName
+FROM Survivors AS s
+INNER JOIN Locations AS l ON s.LocationsID = l.LocationsID
+RIGHT JOIN SurvivorsSkills AS ss ON s.SurvivorsID = ss.SurvivorsID
+INNER JOIN Skills AS sk ON ss.SkillsID = sk.SkillsID;
+GO
+/****** Object:  View [dbo].[PeopleMultipleSkills]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[PeopleMultipleSkills]
+([First Name], [Last Name], [Skill Count], [Location]) AS
+SELECT Survivors.SurvivorsFirstName, Survivors.SurvivorsLastName, COUNT(SurvivorsSkills.SkillsID), Locations.LocationsName
+FROM Survivors
+INNER JOIN SurvivorsSkills ON Survivors.SurvivorsID = SurvivorsSkills.SurvivorsID
+INNER JOIN Locations ON Survivors.LocationsID = Locations.LocationsID
+GROUP BY Survivors.SurvivorsID, Survivors.SurvivorsFirstName, Survivors.SurvivorsLastName, Locations.LocationsName
+HAVING COUNT(SurvivorsSkills.SkillsID) > 1;
+GO
+/****** Object:  View [dbo].[AllPeopleSkillCounts]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[AllPeopleSkillCounts]
+([First Name], [Last Name], [Skill Count], [Location]) AS
+SELECT Survivors.SurvivorsFirstName, Survivors.SurvivorsLastName, COUNT(SurvivorsSkills.SkillsID), Locations.LocationsName
+FROM Survivors
+INNER JOIN SurvivorsSkills ON Survivors.SurvivorsID = SurvivorsSkills.SurvivorsID
+INNER JOIN Locations ON Survivors.LocationsID = Locations.LocationsID
+GROUP BY Survivors.SurvivorsID, Survivors.SurvivorsFirstName, Survivors.SurvivorsLastName, Locations.LocationsName;
+GO
+/****** Object:  View [dbo].[PeopleSearchBySkill]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[PeopleSearchBySkill]
+([First Name], [Last Name], [Skill], [Location]) AS
+SELECT SurvivorsFirstName, SurvivorsLastName, SkillsDescription, LocationsName
+FROM Survivors AS s
+INNER JOIN Locations AS l ON s.LocationsID = l.LocationsID
+RIGHT JOIN SurvivorsSkills AS ss ON s.SurvivorsID = ss.SurvivorsID
+INNER JOIN Skills AS sk ON ss.SkillsID = sk.SkillsID
+WHERE SkillsDescription LIKE '%Doctor%';
+GO
+/****** Object:  View [dbo].[PeopleAges]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[PeopleAges]
+([First Name], [Last Name], [Location], [Age]) AS
+SELECT SurvivorsFirstName, SurvivorsLastName, LocationsName, DATEDIFF(YY, SurvivorsDOB, GETDATE()) AS Age
+FROM Survivors
+INNER JOIN Locations ON Survivors.LocationsID = Locations.LocationsID;
+GO
+/****** Object:  Table [dbo].[MiscItems]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MiscItems](
+	[MiscItemsID] [varchar](8) NOT NULL,
+	[MiscItemsType] [varchar](50) NOT NULL,
+	[MiscItemsDescription] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_MiscItems] PRIMARY KEY CLUSTERED 
+(
+	[MiscItemsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MiscItemsLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MiscItemsLocations](
+	[MiscItemsID] [varchar](8) NOT NULL,
+	[LocationsID] [varchar](8) NOT NULL,
+	[MiscItemsLocationsQty] [int] NOT NULL,
+ CONSTRAINT [PK_MiscItemsLocations] PRIMARY KEY CLUSTERED 
+(
+	[MiscItemsID] ASC,
+	[LocationsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[MiscItemSearch]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[MiscItemSearch]
+([Item Type], [Description], [Location]) AS
+SELECT MiscItemsType, MiscItemsDescription, LocationsName
+FROM MiscItems
+INNER JOIN MiscItemsLocations ON MiscItems.MiscItemsID = MiscItemsLocations.MiscItemsID
+INNER JOIN Locations ON MiscItemsLocations.LocationsID = Locations.LocationsID
+WHERE MiscItemsType LIKE '%Games%';
+GO
+/****** Object:  Table [dbo].[Currency]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Currency](
+	[CurrencyID] [varchar](8) NOT NULL,
+	[CurrencyName] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Currency] PRIMARY KEY CLUSTERED 
+(
+	[CurrencyID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CurrencyLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CurrencyLocations](
+	[CurrencyID] [varchar](8) NOT NULL,
+	[LocationsID] [varchar](8) NOT NULL,
+	[CurrencyLocationsQty] [int] NOT NULL,
+ CONSTRAINT [PK_CurrencyLocations] PRIMARY KEY CLUSTERED 
+(
+	[CurrencyID] ASC,
+	[LocationsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MedicalSupplies]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MedicalSupplies](
+	[MedicalSupplyID] [varchar](8) NOT NULL,
+	[MedicalSupplyName] [varchar](100) NOT NULL,
+	[MedicalSupplyDepartment] [varchar](50) NOT NULL,
+	[MedicalSupplyDescription] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_MedicalSupplies] PRIMARY KEY CLUSTERED 
+(
+	[MedicalSupplyID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[MedicalSuppliesLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MedicalSuppliesLocations](
+	[MedicalSupplyID] [varchar](8) NOT NULL,
+	[LocationsID] [varchar](8) NOT NULL,
+	[MedicalSuppliesLocationsQty] [int] NOT NULL,
+ CONSTRAINT [PK_MedicalSuppliesLocations] PRIMARY KEY CLUSTERED 
+(
+	[MedicalSupplyID] ASC,
+	[LocationsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PowerSource]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PowerSource](
+	[PowerSourceID] [varchar](8) NOT NULL,
+	[PowerSourceName] [varchar](50) NOT NULL,
+	[PowerSourceUnits] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_PowerSource] PRIMARY KEY CLUSTERED 
+(
+	[PowerSourceID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PowerSourceLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PowerSourceLocations](
+	[PowerSourceID] [varchar](8) NOT NULL,
+	[LocationsID] [varchar](8) NOT NULL,
+	[PowerSourceLocationsQty] [int] NOT NULL,
+ CONSTRAINT [PK_PowerSourceLocations] PRIMARY KEY CLUSTERED 
+(
+	[PowerSourceID] ASC,
+	[LocationsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Resources]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Resources](
+	[ResourcesID] [varchar](8) NOT NULL,
+	[ResourcesDescription] [varchar](100) NOT NULL,
+	[ResourcesExpiration] [date] NOT NULL,
+	[ResourcesUnits] [varchar](50) NOT NULL,
+	[CurrencyID] [varchar](8) NOT NULL,
+	[ResourcesCurrencyCost] [int] NOT NULL,
+ CONSTRAINT [PK_Resources] PRIMARY KEY CLUSTERED 
+(
+	[ResourcesID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ResourcesLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ResourcesLocations](
+	[ResourcesID] [varchar](8) NOT NULL,
+	[LocationsID] [varchar](8) NOT NULL,
+	[ResourcesLocationsQty] [int] NOT NULL,
+ CONSTRAINT [PK_ResourcesLocations] PRIMARY KEY CLUSTERED 
+(
+	[ResourcesID] ASC,
+	[LocationsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Transportation]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -240,7 +318,7 @@ CREATE TABLE [dbo].[Transportation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TransportationLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Table [dbo].[TransportationLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -256,7 +334,7 @@ CREATE TABLE [dbo].[TransportationLocations](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Weapons]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Table [dbo].[Weapons]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -272,7 +350,7 @@ CREATE TABLE [dbo].[Weapons](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[WeaponsLocations]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Table [dbo].[WeaponsLocations]    Script Date: 12/12/2022 1:02:46 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1964,6 +2042,8 @@ INSERT [dbo].[SurvivorsSkills] ([SurvivorsID], [SkillsID]) VALUES (N'P088', N'S0
 GO
 INSERT [dbo].[SurvivorsSkills] ([SurvivorsID], [SkillsID]) VALUES (N'P089', N'S004')
 GO
+INSERT [dbo].[SurvivorsSkills] ([SurvivorsID], [SkillsID]) VALUES (N'P096', N'S001')
+GO
 INSERT [dbo].[SurvivorsSkills] ([SurvivorsID], [SkillsID]) VALUES (N'P096', N'S004')
 GO
 INSERT [dbo].[SurvivorsSkills] ([SurvivorsID], [SkillsID]) VALUES (N'P098', N'S007')
@@ -3244,7 +3324,7 @@ INSERT [dbo].[WeaponsLocations] ([WeaponsID], [LocationsID], [WeaponsLocationsQt
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Currency]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Index [IX_Currency]    Script Date: 12/12/2022 1:02:46 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Currency] ON [dbo].[Currency]
 (
 	[CurrencyName] ASC
@@ -3252,7 +3332,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Currency] ON [dbo].[Currency]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_MiscItems_Type]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Index [IX_MiscItems_Type]    Script Date: 12/12/2022 1:02:46 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_MiscItems_Type] ON [dbo].[MiscItems]
 (
 	[MiscItemsID] ASC
@@ -3260,7 +3340,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_MiscItems_Type] ON [dbo].[MiscItems]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_PowerSource]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Index [IX_PowerSource]    Script Date: 12/12/2022 1:02:46 AM ******/
 ALTER TABLE [dbo].[PowerSource] ADD  CONSTRAINT [IX_PowerSource] UNIQUE NONCLUSTERED 
 (
 	[PowerSourceName] ASC
@@ -3268,7 +3348,7 @@ ALTER TABLE [dbo].[PowerSource] ADD  CONSTRAINT [IX_PowerSource] UNIQUE NONCLUST
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Weapons]    Script Date: 12/11/2022 10:40:15 PM ******/
+/****** Object:  Index [IX_Weapons]    Script Date: 12/12/2022 1:02:46 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Weapons] ON [dbo].[Weapons]
 (
 	[WeaponsName] ASC
