@@ -81,7 +81,7 @@ GO
 SELECT * FROM MiscItemSearch;
 GO
 
-
+-- Show Names of locations with their currency type amounts
 CREATE VIEW CurrencyTypeLocation
 ([Location],[CurrencyType], [Amount]) AS
 SELECT locations.LocationsName, Currency.CurrencyName, CurrencyLocations.CurrencyLocationsQty
@@ -94,7 +94,7 @@ SELECT *
 FROM CurrencyTypeLocation;
 GO
 
-
+-- Shows Power source locations with locations names
 CREATE VIEW PowerSourceTypeLocation
 ([Location],[SourceName],[Amount]) as 
 SELECT LocationsName, PowerSourceName, PowerSourceLocationsQty
@@ -105,7 +105,7 @@ GO
 
 SELECT * FROM PowerSourceTypeLocation
 GO
-
+--Shows days till expirtaion for items
 CREATE VIEW ExpirationDays
 ([Loaction],[Description],[DaysTillExpiration]) AS
 SELECT LocationsName, ResourcesDescription, DATEDIFF(Day, GETDATE(), ResourcesExpiration)
