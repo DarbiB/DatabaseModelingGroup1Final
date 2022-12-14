@@ -128,3 +128,42 @@ AS
 		PRINT 'Update Trigger for ResourcesLocations table fired.';
 	END
 GO
+
+
+-- Resource Update Procedures
+
+-- Take
+CREATE PROCEDURE TakeResources (
+	@ResourcesID varchar(8),
+	@LocationsID varchar(8),
+	@ResourceTaken int
+)
+
+AS 
+BEGIN
+	IF (ResourcesLocationsQty >= @ResourceTaken)
+	BEGIN
+		UPDATE [dbo].[ResourcesLocations]
+		SET ResourcesLocationsQty = ResourcesLocationsQty - @ResourceTaken
+		WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+	END
+END;
+
+GO
+
+-- Add
+CREATE PROCEDURE AddResources (
+	@ResourcesID varchar(8),
+	@LocationsID varchar(8),
+	@ResourceTaken int
+)
+
+AS 
+BEGIN
+	UPDATE [dbo].[ResourcesLocations]
+	SET ResourcesLocationsQty = ResourcesLocationsQty + @ResourceTaken
+	WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+
+END;
+
+GO
