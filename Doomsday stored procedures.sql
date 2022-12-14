@@ -19,7 +19,7 @@ GO
 
 
 
-CREATE PROCEDURE captured (
+CREATE PROCEDURE capturedORkilled (
 	@SurvivorsID varchar(8) 
 )
 
@@ -36,19 +36,3 @@ END;
 GO
 
 
-
-CREATE PROCEDURE killed (
-	@SurvivorsID varchar(8) 
-)
-
-AS 
-
-BEGIN
-	DELETE FROM [dbo].[SurvivorsSkills]
-	WHERE SurvivorsID = @SurvivorsID
-	DELETE FROM [dbo].[Survivors]
-	WHERE SurvivorsID = @SurvivorsID
-
-END;
-
-GO
