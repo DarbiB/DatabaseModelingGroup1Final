@@ -105,6 +105,9 @@ Log_Action varchar(20),
 Log_Timestamp datetime
 )
 
+SELECT *
+FROM Low_Resource_Log;
+
 -- Resource Low Trigger
 GO
 CREATE TRIGGER resourceUpdateTrigger ON [dbo].[ResourcesLocations]
@@ -141,12 +144,17 @@ CREATE PROCEDURE TakeResources (
 
 AS 
 BEGIN
-	IF (ResourcesLocationsQty >= @ResourceTaken)
+	DECLARE @CurrentQty AS INT;
+	SELECT @CurrentQty = ResourcesLocationsQty FROM ResourcesLocations WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID;
+	IF (@CurrentQty >= @ResourceTaken)
 	BEGIN
 		UPDATE [dbo].[ResourcesLocations]
 		SET ResourcesLocationsQty = ResourcesLocationsQty - @ResourceTaken
 		WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+		PRINT N'Resources successfully taken.'
 	END
+	ELSE
+		PRINT N'Not enough inventory on hand.'
 END;
 
 GO
@@ -155,14 +163,15 @@ GO
 CREATE PROCEDURE AddResources (
 	@ResourcesID varchar(8),
 	@LocationsID varchar(8),
-	@ResourceTaken int
+	@ResourceAdded int
 )
 
 AS 
 BEGIN
 	UPDATE [dbo].[ResourcesLocations]
-	SET ResourcesLocationsQty = ResourcesLocationsQty + @ResourceTaken
+	SET ResourcesLocationsQty = ResourcesLocationsQty + @ResourceAdded
 	WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+	PRINT N'Resources successfully added.'
 
 END;
 
