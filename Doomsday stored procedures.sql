@@ -36,3 +36,46 @@ END;
 GO
 
 
+-- Resource Update Procedures
+
+-- Take
+CREATE PROCEDURE TakeResources (
+	@ResourcesID varchar(8),
+	@LocationsID varchar(8),
+	@ResourceTaken int
+)
+
+AS 
+BEGIN
+	DECLARE @CurrentQty AS INT;
+	SELECT @CurrentQty = ResourcesLocationsQty FROM ResourcesLocations WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID;
+	IF (@CurrentQty >= @ResourceTaken)
+	BEGIN
+		UPDATE [dbo].[ResourcesLocations]
+		SET ResourcesLocationsQty = ResourcesLocationsQty - @ResourceTaken
+		WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+		PRINT N'Resources successfully taken.'
+	END
+	ELSE
+		PRINT N'Not enough inventory on hand.'
+END;
+
+GO
+
+-- Add
+CREATE PROCEDURE AddResources (
+	@ResourcesID varchar(8),
+	@LocationsID varchar(8),
+	@ResourceAdded int
+)
+
+AS 
+BEGIN
+	UPDATE [dbo].[ResourcesLocations]
+	SET ResourcesLocationsQty = ResourcesLocationsQty + @ResourceAdded
+	WHERE ResourcesID = @ResourcesID AND LocationsID = @LocationsID
+	PRINT N'Resources successfully added.'
+
+END;
+
+GO
